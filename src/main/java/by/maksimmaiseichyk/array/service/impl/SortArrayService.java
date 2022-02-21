@@ -28,6 +28,7 @@ public class SortArrayService implements SortArrayInterface {
         quickSortLogic(tempArray, 0, tempArray.length - 1);
         customArray.setArray(tempArray);
     }
+
     private void quickSortLogic(int[] array, int low, int high){
         if (array.length <= 1){
             return;
@@ -67,14 +68,12 @@ public class SortArrayService implements SortArrayInterface {
             return;
         }
         for (int i = 0; i < tempArray.length; i++) {
-
             int min = i;
             for (int j = i + 1; j < tempArray.length; j++) {
                 if (tempArray[j] < tempArray[min]) {
                     min = j;
                 }
             }
-
             int temp = tempArray[i];
             tempArray[i] = tempArray[min];
             tempArray[min] = temp;

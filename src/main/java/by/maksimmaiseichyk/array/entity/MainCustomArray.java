@@ -1,7 +1,5 @@
 package main.java.by.maksimmaiseichyk.array.entity;
 
-import com.sun.tools.javac.Main;
-
 import java.util.Arrays;
 
 public class MainCustomArray {
@@ -9,14 +7,16 @@ public class MainCustomArray {
 
     public MainCustomArray(){
     }
-    public int[] getArray(){
-        int[] cloneArray = Arrays.copyOf(array, array.length);
-        return cloneArray;
+
+    public MainCustomArray(int... array) {
+        this.array = Arrays.copyOf(array, array.length);
     }
+
+    public int[] getArray(){
+        return Arrays.copyOf(array, array.length);
+    }
+
     public void setArray(int[] array){
         this.array = array;
-    }
-    public boolean isEmpty(){
-        return array == null;
     }
 }

@@ -40,7 +40,6 @@ public class FindInArrayService implements FindInArrayInterface {
     }
 
     public int positiveInArray(MainCustomArray customArray) {
-
         int[] tempArray = customArray.getArray();
         int count = 0;
         for (int j : tempArray) {
