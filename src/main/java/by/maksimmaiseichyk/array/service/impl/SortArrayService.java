@@ -45,11 +45,9 @@ public class SortArrayService implements SortArrayInterface {
                 highBorder--;
             }
             if (lowBorder <= highBorder){
-                if (lowBorder < highBorder) {
-                    int temp = array[lowBorder];
-                    array[lowBorder] = array[highBorder];
-                    array[highBorder] = temp;
-                }
+                int temp = array[lowBorder];
+                array[lowBorder] = array[highBorder];
+                array[highBorder] = temp;
                 lowBorder++;
                 highBorder--;
             }
