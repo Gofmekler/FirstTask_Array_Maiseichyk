@@ -12,6 +12,11 @@ public class MainCustomArray {
         this.array = Arrays.copyOf(array, array.length);
     }
 
+    int id = 0;
+    public int getId(){
+        return id++;
+    }
+
     public int[] getArray() {
         return Arrays.copyOf(array, array.length);
     }
