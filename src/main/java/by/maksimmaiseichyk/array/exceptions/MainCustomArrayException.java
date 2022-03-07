@@ -1,6 +1,11 @@
 package by.maksimmaiseichyk.array.exceptions;
 
 public class MainCustomArrayException extends Exception{
+
+    public MainCustomArrayException(){
+        super();
+    }
+
     public MainCustomArrayException(String message, Throwable cause){
         super(message, cause);
     }

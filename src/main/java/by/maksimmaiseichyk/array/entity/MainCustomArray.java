@@ -1,20 +1,24 @@
 package by.maksimmaiseichyk.array.entity;
 
+import by.maksimmaiseichyk.array.observer.ArrayEvent;
+import by.maksimmaiseichyk.array.observer.ArrayObservable;
+import by.maksimmaiseichyk.array.observer.ArrayObserver;
+import by.maksimmaiseichyk.array.utils.UniqueIdGenerator;
+
 import java.util.Arrays;
 
-public class MainCustomArray {
+public class MainCustomArray implements ArrayObservable {
     private int[] array;
+    private final int id;
+    private ArrayObserver observer;
 
     public MainCustomArray() {
+        id = UniqueIdGenerator.getId();
     }
 
     public MainCustomArray(int... array) {
+        id = UniqueIdGenerator.getId();
         this.array = Arrays.copyOf(array, array.length);
-    }
-
-    int id = 0;
-    public int getId(){
-        return id++;
     }
 
     public int[] getArray() {
@@ -23,6 +27,15 @@ public class MainCustomArray {
 
     public void setArray(int[] array) {
         this.array = Arrays.copyOf(array, array.length);
+        notifyObserver();
+    }
+
+    public int getLength(){
+        return array.length;
+    }
+
+    public int getId(){
+        return id;
     }
 
     public boolean isEmpty(){
@@ -59,4 +72,19 @@ public class MainCustomArray {
          }
          return stringBuilder.toString();
      }
+
+    public void attach(ArrayObserver observer){
+        this.observer = observer;
+    }
+
+    public void detach(ArrayObserver observer){
+        this.observer = null;
+    }
+
+        public void notifyObserver() {
+        ArrayEvent event = new ArrayEvent(this);
+        if (observer != null) {
+            observer.arrayParametersChanged(event);
+        }
+    }
 }

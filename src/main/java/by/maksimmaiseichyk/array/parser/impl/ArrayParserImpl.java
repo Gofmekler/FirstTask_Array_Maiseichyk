@@ -1,16 +1,42 @@
 package by.maksimmaiseichyk.array.parser.impl;
 
 import by.maksimmaiseichyk.array.parser.ArrayParser;
+import by.maksimmaiseichyk.array.validator.ArrayLineValidation;
 
 import java.util.ArrayList;
 
-public class ArrayParserImpl implements ArrayParser {
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
-    public int[] parseLineByLine(ArrayList<String> arrayList) {
-        int[] array = new int[arrayList.size()];
-        for (int i = 0; i < arrayList.size(); i++) {
-            array[i] = Integer.parseInt(arrayList.get(i));
+public class ArrayParserImpl implements ArrayParser {
+    private static final Logger LOGGER = LogManager.getLogger();
+    private static final String SPLIT_REGEX = ",";
+
+    public ArrayList<int[]> parseAll(ArrayList<String> arrayList) {
+        LOGGER.info("parse string array list method called");
+        ArrayList<int[]> intCustomArrays = new ArrayList<>();
+        int[] intArray;
+        for (String line : arrayList) {
+            if (ArrayLineValidation.isLineCorrect(line)) {
+                intArray = parseString(line);
+                intCustomArrays.add(intArray);
+            }
         }
-        return array;
+        return intCustomArrays;
+    }
+
+    private int[] parseString(String line) {
+        int[] arrayLines;
+        String[] lineParts = line.split(SPLIT_REGEX);
+        arrayLines = parseToIntArray(lineParts);
+        return arrayLines;
+    }
+
+    private int[] parseToIntArray(String[] lines) {
+        int[] customArray = new int[lines.length];
+        for (int i = 0; i < customArray.length; i++) {
+            customArray[i] = Integer.parseInt(lines[i]);
+        }
+        return customArray;
     }
 }

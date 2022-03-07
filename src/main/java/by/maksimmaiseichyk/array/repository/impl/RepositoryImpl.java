@@ -4,33 +4,64 @@ import by.maksimmaiseichyk.array.entity.MainCustomArray;
 import by.maksimmaiseichyk.array.repository.Repository;
 import by.maksimmaiseichyk.array.repository.Specifications;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RepositoryImpl implements Repository {
-    private List<MainCustomArray> customArray;
-    @Override
-    public void addObjectToRepository(MainCustomArray someArray) {
-        customArray.add(someArray);
+    private static RepositoryImpl instance;
+    private List<MainCustomArray> customArrays;
+
+    private RepositoryImpl() {
+        customArrays = new ArrayList<>();
     }
 
-    @Override
-    public void removeObjectFromRepository(MainCustomArray someArray) {
-        customArray.remove(someArray);
+    public static RepositoryImpl getInstance() {
+        if (instance == null) {
+            instance = new RepositoryImpl();
+        }
+        return instance;
     }
 
-    @Override
-    public void addAll(Collection<MainCustomArray> someArray) {
-        customArray.addAll(someArray);
+    public RepositoryImpl(List<MainCustomArray> customArrays) {
+        this.customArrays = customArrays;
     }
 
-    @Override
-    public void removeAll(Collection<MainCustomArray> someArray) {
-        customArray.removeAll(someArray);
+    public boolean add(MainCustomArray customArray) {
+        return customArrays.add(customArray);
     }
 
-    @Override
+    public boolean addAll(Collection<MainCustomArray> collection) {
+        return customArrays.addAll(collection);
+    }
+
+    public boolean remove(MainCustomArray customArray) {
+        return customArrays.remove(customArray);
+    }
+
+    public boolean removeAll(Collection<MainCustomArray> collection) {
+        return customArrays.removeAll(collection);
+    }
+
+    public MainCustomArray get(int index) {
+        return customArrays.get(index);
+    }
+
+    public MainCustomArray set(int index, MainCustomArray customArray) {
+        return customArrays.set(index, customArray);
+    }
+
+    public List<MainCustomArray> getAll() {
+        return customArrays;
+    }
+
     public List<MainCustomArray> query(Specifications specification) {
-        return null;
+        return customArrays.stream().filter(specification::specify).collect(Collectors.toList());
+    }
+
+    public List<MainCustomArray> sort(Comparator<MainCustomArray> comparator) {
+        return customArrays.stream().sorted(comparator).collect(Collectors.toList());
     }
 }

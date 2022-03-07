@@ -1,7 +1,7 @@
 package by.maksimmaiseichyk.array.creator;
 
-import by.maksimmaiseichyk.array.entity.MainCustomArray;
+import java.util.ArrayList;
 
 public interface CustomArrayCreator {
-    public MainCustomArray createCustomArray(int[] someArray);
+    ArrayList<int[]> createCustomArray(ArrayList<int[]> parsedAndValidatedArray);
 }

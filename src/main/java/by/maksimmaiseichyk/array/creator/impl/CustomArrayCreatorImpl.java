@@ -1,15 +1,21 @@
 package by.maksimmaiseichyk.array.creator.impl;
 
 import by.maksimmaiseichyk.array.creator.CustomArrayCreator;
-import by.maksimmaiseichyk.array.entity.MainCustomArray;
-import by.maksimmaiseichyk.array.exceptions.MainCustomArrayException;
 
-public class CustomArrayCreatorImpl implements CustomArrayCreator {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.ArrayList;
 
-    @Override
-    public MainCustomArray createCustomArray(int[] parsedAndValidatedArray){
-        MainCustomArray customArray = new MainCustomArray();
-        customArray.setArray(parsedAndValidatedArray);
-        return customArray;
+public class CustomArrayCreatorImpl implements CustomArrayCreator  {
+    private static final Logger LOGGER = LogManager.getLogger();
+
+    public ArrayList<int[]> createCustomArray(ArrayList<int[]> parsedAndValidatedArray){
+        LOGGER.info("create new CustomArray method called");
+        ArrayList<int[]> customArrays = new ArrayList<>();
+        if (parsedAndValidatedArray == null) {
+            return customArrays;
+        }
+        customArrays.addAll(parsedAndValidatedArray);
+        return customArrays;
     }
 }

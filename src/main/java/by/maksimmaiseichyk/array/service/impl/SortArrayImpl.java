@@ -1,10 +1,16 @@
 package by.maksimmaiseichyk.array.service.impl;
 
 import by.maksimmaiseichyk.array.entity.MainCustomArray;
+import by.maksimmaiseichyk.array.service.SortArrayService;
 
-public class SortArrayImpl implements by.maksimmaiseichyk.array.service.SortArrayService {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class SortArrayImpl implements SortArrayService {
+    private static final Logger LOGGER = LogManager.getLogger();
 
     public void bubbleSort(MainCustomArray customArray) {
+        LOGGER.info("bubble sort method called");
         int[] tempArray = customArray.getArray();
         if (tempArray.length <= 1) {
             return;
@@ -23,6 +29,7 @@ public class SortArrayImpl implements by.maksimmaiseichyk.array.service.SortArra
     }
 
     public void quickSort(MainCustomArray customArray) {
+        LOGGER.info("quick sort method called");
         int[] tempArray = customArray.getArray();
         quickSortLogic(tempArray, 0, tempArray.length - 1);
         customArray.setArray(tempArray);
@@ -60,6 +67,7 @@ public class SortArrayImpl implements by.maksimmaiseichyk.array.service.SortArra
     }
 
     public void selectionSort(MainCustomArray customArray) {
+        LOGGER.info("selection sort method called");
         int[] tempArray = customArray.getArray();
         if (tempArray.length <= 1) {
             return;
@@ -67,7 +75,7 @@ public class SortArrayImpl implements by.maksimmaiseichyk.array.service.SortArra
         for (int i = 0; i < tempArray.length; i++) {
             int min = i;
             for (int j = i + 1; j < tempArray.length; j++) {
-                if (tempArray[j] < tempArray[min]) {
+                if (tempArray[j] > tempArray[min]) {
                     min = j;
                 }
             }
