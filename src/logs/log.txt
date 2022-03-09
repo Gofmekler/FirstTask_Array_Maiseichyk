@@ -1,0 +1,20 @@
+2022-03-06 01:55:58 [main] INFO  maksimmaiseichyk.array.datafilereader.impl.DataReaderImpl- read stings from datafile method called
+2022-03-06 01:55:58 [main] ERROR maksimmaiseichyk.array.datafilereader.impl.DataReaderImpl- Reader throw exception
+java.io.FileNotFoundException: src\main\resources\datafile\data.txt (Системе не удается найти указанный путь)
+	at java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.io.FileInputStream.open(FileInputStream.java:216) ~[?:?]
+	at java.io.FileInputStream.<init>(FileInputStream.java:157) ~[?:?]
+	at java.io.FileInputStream.<init>(FileInputStream.java:111) ~[?:?]
+	at java.io.FileReader.<init>(FileReader.java:60) ~[?:?]
+	at by.maksimmaiseichyk.array.datafilereader.impl.DataReaderImpl.readFile(DataReaderImpl.java:18) [FirstTaskArray/:?]
+	at by.maiseichyk.array.service.DataReaderTest.main(DataReaderTest.java:13) [FirstTaskArray/:?]
+2022-03-06 01:56:31 [main] INFO  maksimmaiseichyk.array.datafilereader.impl.DataReaderImpl- read stings from datafile method called
+2022-03-06 01:56:31 [main] ERROR maksimmaiseichyk.array.datafilereader.impl.DataReaderImpl- Reader throw exception
+java.io.FileNotFoundException: src\main\resources\datafile\data.txt (Системе не удается найти указанный путь)
+	at java.io.FileInputStream.open0(Native Method) ~[?:?]
+	at java.io.FileInputStream.open(FileInputStream.java:216) ~[?:?]
+	at java.io.FileInputStream.<init>(FileInputStream.java:157) ~[?:?]
+	at java.io.FileInputStream.<init>(FileInputStream.java:111) ~[?:?]
+	at java.io.FileReader.<init>(FileReader.java:60) ~[?:?]
+	at by.maksimmaiseichyk.array.datafilereader.impl.DataReaderImpl.readFile(DataReaderImpl.java:18) [FirstTaskArray/:?]
+	at by.maiseichyk.array.service.DataReaderTest.main(DataReaderTest.java:13) [FirstTaskArray/:?]
